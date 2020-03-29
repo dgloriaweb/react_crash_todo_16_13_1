@@ -10,19 +10,16 @@ const user = {
 };
 
 function getGreeting(user) {
-  if (user) {
-    return (
-      <div tabIndex="0">
-        <h1>Hello {formatName(user)}</h1>
-      </div>
-    );
-  }
-  return <h1>Hello Stranger</h1>;
+    if (user){
+        return <h1>Hello {formatName(user)}</h1>
+    }
+    return <h1>Hello Stranger</h1>
 }
-const print = getGreeting(user);
+
+const element = getGreeting(user);
 
 function App() {
-  return print;
+  return element;
 }
 
 export default App;
