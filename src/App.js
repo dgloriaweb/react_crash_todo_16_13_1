@@ -1,15 +1,10 @@
-import React from 'react';
-import './App.css';
-import Todos from './components/Todos'
+import React from "react";
+
+const name = "Josh Perez";
+const element = <h1>Hello {name}</h1>;
 
 function App() {
-  return (
-    <div className="App">
-        <h1>
-          <Todos />
-        </h1>
-    </div>
-  );
+  return element;
 }
 
 export default App;
