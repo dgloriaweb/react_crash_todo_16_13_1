@@ -12,6 +12,14 @@
 >>>>>>> DEV-01
 =======
    },
+<<<<<<< HEAD
    "prettier.semi": false
+ }
+>>>>>>> DEV-01
+=======
+  "prettier.semi": false,
+"javascript.preferences.quoteStyle": "single",
+"prettier.singleQuote": true,
+"prettier.jsxSingleQuote": true
  }
 >>>>>>> DEV-01
