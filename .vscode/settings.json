@@ -1,5 +1,11 @@
 {
     "emmet.includeLanguages": {
+<<<<<<< HEAD
         "javascript": "javascriptreact"
     }
 }
+=======
+       "javascript": "javascriptreact"
+    }
+ }
+>>>>>>> DEV-01
