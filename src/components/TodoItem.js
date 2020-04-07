@@ -28,8 +28,8 @@ export class TodoItem extends Component {
             type="checkbox"
             onChange={this.props.markComplete.bind(this, id)}
           />{" "}
-          {title}
-          <button onClick={this.props.deleteTodoItem.bind(this, id)}>
+          {title} &nbsp;
+          <button style={{border:'none', backgroundColor:'red', color:'white', fontSize:'20px'}} onClick={this.props.deleteTodoItem.bind(this, id)}>
             &times;
           </button>
         </p>
