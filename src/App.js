@@ -1,24 +1,25 @@
-import React, { Component } from "react"
-import "./App.css"
-import Todos from "./components/Todos"
-// import { render } from "@testing-library/react"
+import React, { Component } from 'react'
+import Header from './components/layout/Header'
+import './App.css'
+import Todos from './components/Todos'
+// import { render } from '@testing-library/react'
 
 class App extends Component {
   state = {
     todos: [
       {
         id: 1,
-        title: "take trash out",
+        title: 'take trash out',
         completed: false,
       },
       {
         id: 2,
-        title: "walk the dog",
+        title: 'walk the dog',
         completed: false,
       },
       {
         id: 3,
-        title: "eat lunch",
+        title: 'eat lunch',
         completed: false,
       },
     ],
@@ -42,7 +43,8 @@ class App extends Component {
   render() {
     // console.log(this.state.todos)
     return (
-      <div className="App">
+      <div className='App'>
+        <Header />
         <Todos
           todos={this.state.todos}
           markComplete={this.markComplete}

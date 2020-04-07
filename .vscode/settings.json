@@ -2,5 +2,8 @@
     "emmet.includeLanguages": {
        "javascript": "javascriptreact"
    },
-   "prettier.semi": false
+  "prettier.semi": false,
+"javascript.preferences.quoteStyle": "single",
+"prettier.singleQuote": true,
+"prettier.jsxSingleQuote": true
  }
