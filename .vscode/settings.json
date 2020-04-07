@@ -6,6 +6,12 @@
 }
 =======
        "javascript": "javascriptreact"
+<<<<<<< HEAD
     }
+ }
+>>>>>>> DEV-01
+=======
+   },
+   "prettier.semi": false
  }
 >>>>>>> DEV-01
