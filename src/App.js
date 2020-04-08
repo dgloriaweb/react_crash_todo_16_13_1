@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import axios from 'axios'
 
 import Header from './components/layout/Header'
 import './App.css'
@@ -11,23 +12,13 @@ import About from './components/pages/About'
 
 class App extends Component {
   state = {
-    todos: [
-      {
-        id: uuid,
-        title: 'take trash out',
-        completed: false,
-      },
-      {
-        id: uuid,
-        title: 'walk the dog',
-        completed: false,
-      },
-      {
-        id: uuid,
-        title: 'eat lunch',
-        completed: false,
-      },
-    ],
+    todos: [],
+  }
+
+  componentDidMount() {
+    axios
+      .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then(res => this.setState({todos:res.data}))
   }
 
   // toggle complete
@@ -63,7 +54,8 @@ class App extends Component {
           <div className='container'>
             <Header />
             <Route
-              exact path='/'
+              exact
+              path='/'
               render={(props) => (
                 <React.Fragment>
                   <AddTodo addTodo={this.addTodo} />
@@ -75,12 +67,7 @@ class App extends Component {
                 </React.Fragment>
               )}
             ></Route>
-            <Route
-            path='/about'
-            component= {About}
-            >
-
-            </Route>
+            <Route path='/about' component={About}></Route>
           </div>
         </div>
       </Router>
