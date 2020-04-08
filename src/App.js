@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Header from './components/layout/Header'
 import './App.css'
 import Todos from './components/Todos'
+import AddTodo from './components/AddTodo'
 // import { render } from '@testing-library/react'
 
 class App extends Component {
@@ -39,17 +40,30 @@ class App extends Component {
       todos: [...this.state.todos.filter((todo) => todo.id !== id)],
     })
   }
+  addTodo = (title) => {
+    const newTodo = {
+      id: 4,
+      title,
+      completed: false,
+    }
+    this.setState({
+      todos:[...this.state.todos, newTodo]
+    })
+  }
 
   render() {
     // console.log(this.state.todos)
     return (
       <div className='App'>
-        <Header />
-        <Todos
-          todos={this.state.todos}
-          markComplete={this.markComplete}
-          deleteTodoItem={this.deleteTodoItem}
-        />
+        <div className='container'>
+          <Header />
+          <AddTodo addTodo={this.addTodo}/>
+          <Todos
+            todos={this.state.todos}
+            markComplete={this.markComplete}
+            deleteTodoItem={this.deleteTodoItem}
+          />
+        </div>
       </div>
     )
   }
