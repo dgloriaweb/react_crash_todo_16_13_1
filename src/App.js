@@ -40,6 +40,16 @@ class App extends Component {
       todos: [...this.state.todos.filter((todo) => todo.id !== id)],
     })
   }
+  addTodo = (title) => {
+    const newTodo = {
+      id: 4,
+      title,
+      completed: false,
+    }
+    this.setState({
+      todos:[...this.state.todos, newTodo]
+    })
+  }
 
   render() {
     // console.log(this.state.todos)
@@ -47,7 +57,7 @@ class App extends Component {
       <div className='App'>
         <div className='container'>
           <Header />
-          <AddTodo />
+          <AddTodo addTodo={this.addTodo}/>
           <Todos
             todos={this.state.todos}
             markComplete={this.markComplete}
