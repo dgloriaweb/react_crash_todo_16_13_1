@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export class AddTodo extends Component {
   state = {
@@ -25,7 +26,7 @@ export class AddTodo extends Component {
           placeholder='add todo...'
           value={this.state.title}
           onChange={this.onChange}
-          style={{ flex: '10', padding: '5px' }}
+          style={{ flex: '10', padding: '5px' }} 
         />
         <input
           className='btn'
@@ -38,4 +39,9 @@ export class AddTodo extends Component {
   }
 }
 
+
+AddTodo.propTypes = {
+  addTodo: PropTypes.func.isRequired,
+}
 export default AddTodo
+ 
