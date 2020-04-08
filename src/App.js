@@ -30,11 +30,18 @@ class App extends Component {
       }),
     })
   }
+
+  // delete todo item
   deleteTodoItem = (id) => {
-    this.setState({
-      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
-    })
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then((res) => this.setState({
+          todos: [...this.state.todos.filter((todo) => todo.id !== id)]
+        })
+      )
   }
+
+  // add todo item
   addTodo = (title) => {
     axios
       .post('https://jsonplaceholder.typicode.com/todos', {
