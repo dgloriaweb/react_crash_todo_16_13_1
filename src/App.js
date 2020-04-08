@@ -1,33 +1,24 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import axios from 'axios'
 
 import Header from './components/layout/Header'
 import './App.css'
 import Todos from './components/Todos'
 import AddTodo from './components/AddTodo'
-import { v4 as uuid } from 'uuid'
+// import { v4 as uuid } from 'uuid'
 import About from './components/pages/About'
 // import { render } from '@testing-library/react'
 
 class App extends Component {
   state = {
-    todos: [
-      {
-        id: uuid,
-        title: 'take trash out',
-        completed: false,
-      },
-      {
-        id: uuid,
-        title: 'walk the dog',
-        completed: false,
-      },
-      {
-        id: uuid,
-        title: 'eat lunch',
-        completed: false,
-      },
-    ],
+    todos: [],
+  }
+
+  componentDidMount() {
+    axios
+      .get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+      .then((res) => this.setState({ todos: res.data }))
   }
 
   // toggle complete
@@ -39,20 +30,29 @@ class App extends Component {
       }),
     })
   }
+
+  // delete todo item
   deleteTodoItem = (id) => {
-    this.setState({
-      todos: [...this.state.todos.filter((todo) => todo.id !== id)],
-    })
+    axios
+      .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+      .then((res) => this.setState({
+          todos: [...this.state.todos.filter((todo) => todo.id !== id)]
+        })
+      )
   }
+
+  // add todo item
   addTodo = (title) => {
-    const newTodo = {
-      id: uuid,
-      title,
-      completed: false,
-    }
-    this.setState({
-      todos: [...this.state.todos, newTodo],
-    })
+    axios
+      .post('https://jsonplaceholder.typicode.com/todos', {
+        title,
+        completed: false,
+      })
+      .then((res) =>
+        this.setState({
+          todos: [...this.state.todos, res.data],
+        })
+      )
   }
 
   render() {
@@ -63,7 +63,8 @@ class App extends Component {
           <div className='container'>
             <Header />
             <Route
-              exact path='/'
+              exact
+              path='/'
               render={(props) => (
                 <React.Fragment>
                   <AddTodo addTodo={this.addTodo} />
@@ -75,12 +76,7 @@ class App extends Component {
                 </React.Fragment>
               )}
             ></Route>
-            <Route
-            path='/about'
-            component= {About}
-            >
-
-            </Route>
+            <Route path='/about' component={About}></Route>
           </div>
         </div>
       </Router>

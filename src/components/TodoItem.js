@@ -40,6 +40,8 @@ export class TodoItem extends Component {
 
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
+  markComplete: PropTypes.func.isRequired,
+  deleteTodoItem: PropTypes.func.isRequired
 }
 
 export default TodoItem
